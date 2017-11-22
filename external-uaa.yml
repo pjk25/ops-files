@@ -1,0 +1,24 @@
+# Switch Director to use UAA
+- type: replace
+  path: /instance_groups/name=bosh/properties/director/user_management/provider
+  value: uaa
+
+- type: remove
+  path: /instance_groups/name=bosh/properties/director/user_management/local
+
+- type: replace
+  path: /instance_groups/name=bosh/properties/director/user_management/uaa?/url
+  value: "https://((uaa_ip)):8443"
+
+- type: replace
+  path: /instance_groups/name=bosh/properties/director/user_management/uaa/public_key?
+  value: ((uaa_jwt_signing_key.public_key))
+
+# Switch HM to use UAA
+- type: replace
+  path: /instance_groups/name=bosh/properties/hm/director_account/client_id?
+  value: hm
+
+- type: replace
+  path: /instance_groups/name=bosh/properties/hm/director_account/client_secret?
+  value: ((hm_password))
