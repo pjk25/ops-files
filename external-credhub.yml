@@ -4,9 +4,9 @@
   value:
     enabled: true
     url: "https://((credhub_ip)):8844/api/"
-    ca_cert: ((credhub_tls.ca))
+    ca_cert: ((/internal_ssl.ca))
     uaa:
       url: "https://((uaa_ip)):8443"
-      ca_cert: ((internal_ssl.ca))
+      ca_cert: ((/internal_ssl.ca))
       client_id: director_to_credhub
-      client_secret: ((uaa_clients_director_to_credhub))
+      client_secret: ((/uaa_clients_director_to_credhub))

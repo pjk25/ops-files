@@ -8,7 +8,7 @@
   path: /instance_groups/name=bosh/properties/director/db
   value:
     host: ((postgres_ip))
-    password: ((bosh_db_password))
+    password: ((/bosh_db_password))
 
 - type: remove
   path: /variables/name=postgres_password

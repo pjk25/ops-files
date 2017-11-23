@@ -12,7 +12,7 @@
 
 - type: replace
   path: /instance_groups/name=bosh/properties/director/user_management/uaa/public_key?
-  value: ((uaa_jwt_signing_key.public_key))
+  value: ((/uaa_jwt_signing_key.public_key))
 
 # Switch HM to use UAA
 - type: replace
@@ -21,4 +21,4 @@
 
 - type: replace
   path: /instance_groups/name=bosh/properties/hm/director_account/client_secret?
-  value: ((hm_password))
+  value: ((/hm_password))
