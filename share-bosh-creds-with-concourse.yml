@@ -1,0 +1,33 @@
+- type: replace
+  path: /instance_groups/name=bosh/jobs/name=uaa/properties/uaa/scim/users/name=admin/password
+  value: ((/concourse/cf/admin_password))
+
+- type: replace
+  path: /instance_groups/name=bosh/jobs/name=uaa/properties/uaa/clients/admin/secret
+  value: ((/concourse/cf/admin_password))
+
+- type: replace
+  path: /variables/name=admin_password/name
+  value: /concourse/cf/admin_password
+
+- type: replace
+  path: /instance_groups/name=bosh/properties/director/ssl
+  value:
+    key: ((/concourse/cf/director_ssl.private_key))
+    cert: ((/concourse/cf/director_ssl.certificate))
+
+- type: replace
+  path: /instance_groups/name=bosh/properties/hm/director_account/ca_cert
+  value: ((/concourse/cf/director_ssl.ca))
+
+- type: replace
+  path: /instance_groups/name=bosh/jobs/name=postgres/properties/tls
+  value: ((/concourse/cf/director_ssl))
+
+- type: replace
+  path: /instance_groups/name=web/jobs/name=atc/properties/postgresql/ca_cert?
+  value: ((/concourse/cf/director_ssl.ca))
+
+- type: replace
+  path: /variables/name=director_ssl/name
+  value: /concourse/cf/director_ssl
