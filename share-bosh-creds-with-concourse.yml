@@ -21,13 +21,5 @@
   value: ((/concourse/cf/director_ssl.ca))
 
 - type: replace
-  path: /instance_groups/name=bosh/jobs/name=postgres/properties/tls
-  value: ((/concourse/cf/director_ssl))
-
-- type: replace
-  path: /instance_groups/name=web/jobs/name=atc/properties/postgresql/ca_cert?
-  value: ((/concourse/cf/director_ssl.ca))
-
-- type: replace
   path: /variables/name=director_ssl/name
   value: /concourse/cf/director_ssl
